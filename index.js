@@ -1,5 +1,6 @@
 const express = require('express');
 const getQA = require('./routes/getQA.js');
+const port = process.env.PORT || 3000;
 const app = express();
 
 // Middleware
@@ -13,4 +14,6 @@ app.get('/', (req, res) => {
 
 // connect to mongo
 
-app.listen(3000);
+app.listen(port, function () {
+  console.log(`listening on port ${port}!`);
+});
