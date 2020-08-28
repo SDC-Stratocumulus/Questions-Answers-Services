@@ -1,13 +1,8 @@
 var mysql = require('mysql');
-var mysqlConfig = require('./config.js');
+var mysqlConfig = require('../ config/config.js);
 
-var connection = mysql.createConnection({
-  host: 'mysql',
-  user: 'root',
-  password: 'root',
-  database: 'SDC',
-  port: 3306,
-});
+var connection = mysql.createConnection(mysqlConfig);
+
 connection.connect((error) => {
   if (error) {
     console.log(error);
