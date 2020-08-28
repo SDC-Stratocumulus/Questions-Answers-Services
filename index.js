@@ -9,7 +9,7 @@ const app = express();
 app.use('/questions', getQA);
 
 app.get('/', (req, res) => {
-  res.send('Index');
+  res.send('Indexs');
 });
 
 // connect to mongo

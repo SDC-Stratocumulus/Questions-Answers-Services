@@ -1,0 +1,6 @@
+FROM mysql:5.7
+LABEL author="Deo"
+ENV MYSQL_DATABASE SDC
+COPY ./sampledata /var/lib/mysql-files/
+
+
