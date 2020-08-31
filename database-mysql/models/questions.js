@@ -58,10 +58,10 @@ const getProduct = async (productID, callback) => {
     }
 
     // Build pictures URL object
-
     callback(null, resultObject);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
+    callback(error, null);
   }
   //console.log(response);
 };
