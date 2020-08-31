@@ -6,7 +6,7 @@ module.exports = {
     if (req.query.product_id === undefined) {
       res.sendStatus(404);
     } else {
-      models.questions.get(req.query.product_id, (error, data) => {
+      models.questions.getProduct(req.query.product_id, (error, data) => {
         if (error) {
           res.sendStatus(500);
         } else {
