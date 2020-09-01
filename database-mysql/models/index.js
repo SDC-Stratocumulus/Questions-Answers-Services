@@ -1,3 +1,4 @@
-exports.questions = require('./questions.js');
-exports.answers = require('./answers.js');
+exports.questions = require('./questionsModel.js');
+exports.answers = require('./answersModel.js');
 exports.postQuestionModel = require('./postQuestionModel.js');
+exports.postAnswerModel = require('./postAnswerModel.js');

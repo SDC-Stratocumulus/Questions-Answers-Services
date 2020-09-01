@@ -31,6 +31,7 @@ const getProduct = async (productID, callback) => {
       temp['answers'] = {};
       resultObject.results.push(temp);
     }
+    //console.log(resultObject.results);
 
     // Get answers for each unique questions
     let answers;
@@ -68,6 +69,7 @@ const getProduct = async (productID, callback) => {
     }
 
     // Build pictures URL object
+    console.log(resultObject);
     callback(null, resultObject);
   } catch (error) {
     //console.log(error);
