@@ -67,7 +67,7 @@ const getProduct = async (productID, callback) => {
         }
       }
     }
-
+    connection.close();
     // Build pictures URL object
     callback(null, resultObject);
   } catch (error) {
