@@ -23,7 +23,6 @@ const postAnswer = async function (questionID, body, cb) {
       `INSERT INTO answers_photos (answer_id, url) VALUES (?,?)`,
       [insertAnswerId.insertId, body.photos]
     );
-    console.log(insertPhotos, ' INSERT ANSWER');
     if (insertPhoto.affectedRows !== undefined) {
       cb(null, insertPhoto);
     }

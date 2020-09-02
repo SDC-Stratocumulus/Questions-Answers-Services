@@ -69,7 +69,6 @@ const getProduct = async (productID, callback) => {
     }
 
     // Build pictures URL object
-    console.log(resultObject);
     callback(null, resultObject);
   } catch (error) {
     //console.log(error);
