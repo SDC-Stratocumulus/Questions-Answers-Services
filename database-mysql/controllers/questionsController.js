@@ -8,6 +8,7 @@ module.exports = {
     } else {
       models.questions.getProduct(req.query.product_id, (error, data) => {
         if (error) {
+          console.log(error);
           res.sendStatus(500);
         } else {
           res.send(data);
