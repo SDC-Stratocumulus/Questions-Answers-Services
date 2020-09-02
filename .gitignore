@@ -4,3 +4,4 @@ package-lock.json
 database-mysql/config.js
 config
 .env
+SDC.pem

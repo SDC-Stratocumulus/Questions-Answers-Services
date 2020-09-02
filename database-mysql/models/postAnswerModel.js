@@ -3,7 +3,7 @@ const config = require('../../config/config');
 
 const postAnswer = async function (questionID, body, cb) {
   const connection = new db(config);
-  console.log(questionID, ' ', body);
+
   const date = new Date();
   //TODO: NEED to account if question exist
 
@@ -12,22 +12,20 @@ const postAnswer = async function (questionID, body, cb) {
       `SELECT id FROM questions WHERE id = ?`,
       questionID
     );
-    console.log(questionExist.length);
-    if (questionExist.length === 0) {
-      cb(500, null);
-    } else {
-      const insertAnswerId = await connection.query(
-        `INSERT INTO answers (question_id, body, date_written, answerer_name, answerer_email, reported, helpful) VALUES (?,?,?,?,?,?,?)`,
-        [questionID, body.body, date, body.name, body.email, 0, 0]
-      );
-      //console.log(insertAnswerId);
-      const insertPhoto = await connection.query(
-        `INSERT INTO answers_photo (answer_id, url) VALUES (?,?)`,
-        [insertAnswerId.insertId, body.photos]
-      );
-      if (insertPhoto.affectedRows !== undefined) {
-        cb(null, insertPhoto);
-      }
+    // console.log(questionExist, ' questions');
+    const insertAnswerId = await connection.query(
+      `INSERT INTO answers (question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
+      VALUES (?,?,?,?,?,?,?)`,
+      [questionID, body.body, date, body.name, body.email, 0, 0]
+    );
+    //console.log(insertAnswerId, ' answer');
+    const insertPhoto = await connection.query(
+      `INSERT INTO answers_photos (answer_id, url) VALUES (?,?)`,
+      [insertAnswerId.insertId, body.photos]
+    );
+    console.log(insertPhotos, ' INSERT ANSWER');
+    if (insertPhoto.affectedRows !== undefined) {
+      cb(null, insertPhoto);
     }
   } catch (error) {
     cb(error, null);
