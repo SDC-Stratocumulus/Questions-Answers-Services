@@ -1,18 +1,17 @@
 const models = require('../models/index');
 
 module.exports = {
-  post: function (req, res) {
+  update: function (req, res) {
     if (req.params.id === undefined) {
       res.sendStatus(404);
     } else {
-      models.postAnswerModel.postAnswer(
+      models.reportQuestionModel.reportQuestion(
         req.params.id,
-        req.body,
         (error, data) => {
           if (error) {
-            res.sendStatus(500);
+            res.send(500);
           } else {
-            res.sendStatus(201);
+            res.sendStatus(204);
           }
         }
       );

@@ -12,11 +12,11 @@ const postAnswer = async function (questionID, body, cb) {
       `SELECT id FROM questions WHERE id = ?`,
       questionID
     );
-    // console.log(questionExist, ' questions');
+
     const insertAnswerId = await connection.query(
       `INSERT INTO answers (question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
       VALUES (?,?,?,?,?,?,?)`,
-      [questionID, body.body, date, body.name, body.email, 0, 0]
+      [questionExist[0].id, body.body, date, body.name, body.email, 0, 0]
     );
     //console.log(insertAnswerId, ' answer');
     const insertPhoto = await connection.query(
