@@ -20,6 +20,7 @@ const postQuestion = async function (body, cb) {
     .catch((error) => {
       cb(error, null);
     });
+  connection.close();
 };
 
 module.exports.postQuestion = postQuestion;

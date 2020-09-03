@@ -39,7 +39,7 @@ const getAnswers = async function (questionID, cb) {
       }
       resultObject.results.push(temp);
     }
-
+    connection.close();
     cb(null, resultObject);
   } catch (error) {
     cb(error, null);
