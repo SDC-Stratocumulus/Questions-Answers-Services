@@ -70,16 +70,7 @@ const getProduct = async (productID, callback) => {
     }
 
     // Set to redis
-    client.setex(
-      resultObject.product_id,
-      3000,
-      JSON.stringify(resultObject),
-      (error, data) => {
-        if (error) {
-          console.log(error);
-        }
-      }
-    );
+    client.setex(resultObject.product_id, 3000, JSON.stringify(resultObject));
 
     // Build pictures URL object
     callback(null, resultObject);
