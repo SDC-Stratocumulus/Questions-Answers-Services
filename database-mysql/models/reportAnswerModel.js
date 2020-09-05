@@ -25,6 +25,8 @@ const reportAnswer = async (answerID, callback) => {
     connection.close();
   } catch (error) {
     callback(error, null);
+  } finally {
+    connection.close();
   }
 };
 

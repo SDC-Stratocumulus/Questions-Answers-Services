@@ -1,5 +1,6 @@
 const db = require('../db/index.js');
 const config = require('../../config/config.js');
+const client = require('../../redis/index');
 
 const getProduct = async (productID, callback) => {
   //console.log(productID);
@@ -67,14 +68,26 @@ const getProduct = async (productID, callback) => {
         }
       }
     }
-    connection.close();
+
+    // Set to redis
+    client.setex(
+      resultObject.product_id,
+      3000,
+      JSON.stringify(resultObject),
+      (error, data) => {
+        if (error) {
+          console.log(error);
+        }
+      }
+    );
+
     // Build pictures URL object
     callback(null, resultObject);
   } catch (error) {
-    //console.log(error);
     callback(error, null);
+  } finally {
+    connection.close();
   }
-  //console.log(response);
 };
 
 module.exports.getProduct = getProduct;

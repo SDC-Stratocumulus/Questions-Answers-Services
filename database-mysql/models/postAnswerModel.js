@@ -28,8 +28,9 @@ const postAnswer = async function (questionID, body, cb) {
     }
   } catch (error) {
     cb(error, null);
+  } finally {
+    connection.close();
   }
-  connection.close();
 };
 
 module.exports.postAnswer = postAnswer;

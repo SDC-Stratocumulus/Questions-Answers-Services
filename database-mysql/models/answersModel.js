@@ -43,6 +43,8 @@ const getAnswers = async function (questionID, cb) {
     cb(null, resultObject);
   } catch (error) {
     cb(error, null);
+  } finally {
+    connection.close();
   }
 };
 

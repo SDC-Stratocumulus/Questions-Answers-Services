@@ -21,10 +21,10 @@ const updateHelpfulAnswer = async (answerID, callback) => {
       .catch((error) => {
         callback(error, null);
       });
-
-    connection.close();
   } catch (error) {
     callback(error, null);
+  } finally {
+    connection.close();
   }
 };
 

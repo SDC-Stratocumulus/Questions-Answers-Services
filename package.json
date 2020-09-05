@@ -22,7 +22,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "artillery": "^1.6.1",
